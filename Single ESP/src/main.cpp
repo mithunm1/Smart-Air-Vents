@@ -105,6 +105,8 @@ void loop()
     // Serial.println(temperature);
 
     int servoAngle = map(temperature, 25, 29, 0, 180);
+    int angle = map((int)((t1 + t2 + t3) / 3), 15, 30, 30, 90);
+    servo.write(angle);
 
     // Serial.print("Servo Angle: ");
     // Serial.println(servoAngle);

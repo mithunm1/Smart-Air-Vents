@@ -9,7 +9,7 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 // Sender Logic
-uint8_t broadcastAddress[] = {0x24, 0xDC, 0xC3, 0x98, 0x77, 0x24};
+uint8_t broadcastAddress[] = {0x24, 0xDC, 0xC3, 0x98, 0xB0, 0x34};
 
 typedef struct struct_message
 {
@@ -28,7 +28,7 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status)
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
   WiFi.mode(WIFI_STA);
   if (esp_now_init() != ESP_OK)
   {
@@ -65,7 +65,7 @@ void loop()
   }
 
   // Set values to send
-  myData.id = 1;
+  myData.id = 3;
   myData.temperature = temperature;
 
   // Send message via ESP-NOW
