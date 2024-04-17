@@ -1,14 +1,13 @@
 #include <Arduino.h>
 #include <esp_now.h>
 #include <WiFi.h>
-#include <DHT.h> // Include the DHT sensor library
+#include <DHT.h>
 
-#define DHTPIN 4      // Digital pin connected to the DHT sensor
-#define DHTTYPE DHT11 // DHT 11
+#define DHTPIN 4
+#define DHTTYPE DHT11
 
 DHT dht(DHTPIN, DHTTYPE);
 
-// Sender Logic
 uint8_t broadcastAddress[] = {0x24, 0xDC, 0xC3, 0x98, 0xB0, 0x34};
 
 typedef struct struct_message
@@ -51,24 +50,19 @@ void setup()
 
 void loop()
 {
-  // Wait a few seconds between measurements.
   delay(2000);
 
-  // Read temperature as Celsius
   float temperature = dht.readTemperature();
 
-  // Check if any reads failed and exit early (to try again).
   if (isnan(temperature))
   {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
 
-  // Set values to send
-  myData.id = 3;
+  myData.id = 3; // Change ID for each board
   myData.temperature = temperature;
 
-  // Send message via ESP-NOW
   esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
 
   if (result == ESP_OK)
