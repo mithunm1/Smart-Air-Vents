@@ -1,3 +1,12 @@
+/**
+ * @file main.cpp
+ * @brief ESP-NOW sender example that reads temperature from a DHT11 sensor and sends it to a broadcast address.
+ *
+ * This code sets up an ESP-NOW connection, reads the temperature from a DHT11 sensor, and sends the temperature data to a broadcast address.
+ * The `OnDataSent` callback function is used to handle the status of the sent data.
+ * The `setup()` function initializes the ESP-NOW connection and the DHT11 sensor.
+ * The `loop()` function reads the temperature and sends the data via ESP-NOW every 2 seconds.
+ */
 #include <Arduino.h>
 #include <esp_now.h>
 #include <WiFi.h>

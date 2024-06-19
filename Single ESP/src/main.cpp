@@ -1,3 +1,34 @@
+/**
+ * @file main.cpp
+ * @brief Main entry point for the Smart Air Vents project.
+ *
+ * This file sets up the WiFi connection, starts the web server, and handles the
+ * temperature and humidity readings from the DHT11 sensor. It also controls the
+ * servo motor to adjust the air vent based on the average temperature.
+ */
+
+/**
+ * @brief Handles the root URL request and generates the HTML response.
+ *
+ * This function is called when a client requests the root URL ("/"). It generates
+ * an HTML page that displays the current temperature and humidity readings from
+ * the DHT11 sensor.
+ */
+void handleRoot();
+
+/**
+ * @brief Reads the temperature from the DHT11 sensor.
+ *
+ * @return The current temperature in Celsius, or -1 if the sensor read fails.
+ */
+float readDHTTemperature();
+
+/**
+ * @brief Reads the humidity from the DHT11 sensor.
+ *
+ * @return The current humidity percentage, or -1 if the sensor read fails.
+ */
+float readDHTHumidity();
 #include <Arduino.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>

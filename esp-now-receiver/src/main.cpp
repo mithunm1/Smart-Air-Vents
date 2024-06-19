@@ -1,3 +1,18 @@
+/**
+ * @brief Handles the reception of data from other boards using ESP-NOW.
+ *
+ * This function is called whenever data is received from another board using the
+ * ESP-NOW protocol. It extracts the received data, which includes an ID and a
+ * temperature value, and stores it in the `boardsStruct` array.
+ *
+ * @param mac_addr The MAC address of the board that sent the data.
+ * @param incomingData A pointer to the received data.
+ * @param len The length of the received data.
+ */
+void OnDataRecv(const uint8_t *mac_addr, const uint8_t *incomingData, int len)
+{
+  // Function implementation
+}
 #include <Arduino.h>
 #include <esp_now.h>
 #include <WiFi.h>
